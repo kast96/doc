@@ -33,6 +33,10 @@ RewriteRule ^(.*)index\.phps?$ https://%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.(.*)$
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
+#upper words to lower
+RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.*)/"
+RewriteRule [A-Z] %1 [R=301,L]
+
 #without slash to with slash
 RewriteCond %{REQUEST_URI} !\?
 RewriteCond %{REQUEST_URI} !\&
