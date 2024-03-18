@@ -57,4 +57,8 @@ RewriteRule ^(.*[^\/])$ https://%{HTTP_HOST}/$1/ [R=301,L]
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#remove double slash
+RewriteCond %{THE_REQUEST} //
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 ```
