@@ -34,6 +34,7 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
 #upper words to lower
+RewriteCond %{REQUEST_URI} !^/(bitrix|local|ajax|include) [NC]
 RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.*)/"
 RewriteRule [A-Z] %1 [R=301,L]
 
